@@ -1,0 +1,80 @@
+generated: '2026-07-19'
+method: searched
+source: https://lightning.ai/docs/platform/developers/cli
+docs:
+- https://lightning.ai/docs/platform/build/sandbox
+- https://lightning.ai/docs/platform/developers/sdk/sandbox/python-sandbox-sdk
+- https://lightning.ai/docs/platform/developers/sdk/sandbox/js-sandbox-sdk
+- https://lightning.ai/docs/platform/developers/cli
+note: >-
+  Lightning AI publishes no OpenAPI definition, so this profile is captured from
+  the published SDK and CLI authentication documentation rather than derived from
+  securitySchemes. No OAuth 2.0 or OpenID Connect surface is documented for the
+  platform API, so there is no scopes/ artifact for this provider.
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - environment
+  oauth2_flows: []
+  openid_connect: false
+  mutual_tls: false
+schemes:
+- name: LightningApiKey
+  type: apiKey
+  description: >-
+    A Lightning API key authenticates the SDKs and the CLI against the platform
+    control plane. Keys are created in the UI and can be scoped to a specific
+    teamspace and role. The teamspace-scoped key is the recommended form - the
+    key itself selects the project, so the JS SDK takes no teamspace argument.
+  key_prefix: sk-lit-
+  scoping: teamspace + role
+  provisioning: Organization settings -> Members -> API keys -> Create API Key
+  environment_variables:
+  - name: LIGHTNING_SANDBOX_API_KEY
+    role: Primary auth for Sandbox (preferred)
+  - name: LIGHTNING_API_KEY
+    role: Legacy / general platform fallback
+  - name: LIGHTNING_USER_ID
+    role: Paired with LIGHTNING_API_KEY for CLI environment auth
+  - name: LIGHTNING_CLOUD_URL
+    role: Optional control-plane base URL override (default https://lightning.ai)
+  precedence: >-
+    Explicit configure() values -> LIGHTNING_SANDBOX_API_KEY ->
+    LIGHTNING_API_KEY (legacy). For the base URL, configure({ baseUrl }) ->
+    LIGHTNING_CLOUD_URL -> production default.
+  in_code:
+  - language: python
+    example: 'Sandbox.configure(api_key="sk-lit-...", base_url="https://lightning.ai")'
+  - language: javascript
+    example: 'Sandbox.configure({ apiKey: "sk-lit-...", baseUrl: "https://lightning.ai" })'
+  caveats:
+  - >-
+    Python SDK reads credentials at import time - setting os.environ after
+    import is ignored. The JS SDK reads credentials lazily on each request.
+  - >-
+    A personal login key cannot be used where a teamspace-scoped key is
+    required; sandbox creation fails with an explicit "not your personal login
+    key" error.
+- name: InteractiveLogin
+  type: interactive
+  description: >-
+    The CLI can authenticate interactively via a browser-based login, which
+    stores credentials locally for subsequent commands.
+  command: lightning login
+- name: ModelApiKey
+  type: apiKey
+  description: >-
+    Lightning Model APIs authenticate with the same Lightning API key, passed to
+    the litai client or supplied to OpenAI- and Anthropic-compatible clients as
+    the API key with https://lightning.ai as the base URL.
+  obtain_at: https://lightning.ai/lightning-ai/model-apis/models?showApiKey=true
+  in_code:
+  - language: python
+    example: LLM(model="openai/gpt-5", api_key="<LIGHTNING_API_KEY>")
+  compatible_clients:
+  - client: OpenAI Python SDK
+  - client: Anthropic / Claude Code
+    config: ANTHROPIC_BASE_URL=https://lightning.ai/ with ANTHROPIC_API_KEY set
+      to the Lightning API key
