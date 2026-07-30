@@ -1,0 +1,98 @@
+# Lightning AI
+
+> Lightning AI is a platform for building AI: develop in a cloud Studio, train at scale, and deploy models as APIs.
+
+## Key Information
+
+Products: Studios, Training, Inference/Deployments, Data. Open-source libraries: PyTorch Lightning, Fabric, LitServe, LitData.
+Website: https://lightning.ai. Docs: https://lightning.ai/docs
+
+## Docs
+
+The Lightning AI platform — develop in a Studio, deploy a model, train at scale, manage your team and bring your own cloud.
+
+- [Overview](https://lightning.ai/docs/platform/overview.md)
+  - [Getting started](https://lightning.ai/docs/platform/overview/getting-started.md)
+  - [Quickstart](https://lightning.ai/docs/platform/overview/quick-start.md)
+  - [Why Lightning](https://lightning.ai/docs/platform/overview/why-lightning.md)
+  - [Setups](https://lightning.ai/docs/platform/overview/setups.md)
+  - [Examples](https://lightning.ai/docs/platform/overview/examples.md)
+  - [FAQ](https://lightning.ai/docs/platform/overview/faq.md)
+- [Build](https://lightning.ai/docs/platform/build.md): Build with Lightning — develop in a Studio, run notebooks, build agents, and host web apps.
+  - [AI Studio (workspace)](https://lightning.ai/docs/platform/build/ai-studio.md)
+  - [Notebooks](https://lightning.ai/docs/platform/build/notebooks.md)
+  - [Sandbox](https://lightning.ai/docs/platform/build/sandbox.md)
+  - [Agents](https://lightning.ai/docs/platform/build/agents.md)
+  - [Host web apps](https://lightning.ai/docs/platform/build/host-web-apps.md)
+  - [Examples](https://lightning.ai/docs/platform/build/examples.md)
+- [Inference](https://lightning.ai/docs/platform/inference.md): Serve and deploy AI models on Lightning. Start with Model APIs for hosted models you can call with an API key, move to Lightning Inference for managed...
+  - [Overview](https://lightning.ai/docs/platform/inference/inference-overview.md)
+  - [Model APIs](https://lightning.ai/docs/platform/inference/model-apis.md)
+  - [Lightning Inference](https://lightning.ai/docs/platform/inference/lightning-inference.md)
+  - [Custom models](https://lightning.ai/docs/platform/inference/custom-models.md)
+  - [Batch jobs](https://lightning.ai/docs/platform/inference/batch-jobs.md)
+  - [Deploy a container](https://lightning.ai/docs/platform/inference/deploy-containers.md)
+  - [Deploy Examples (full code)](https://lightning.ai/docs/platform/inference/deploy-examples.md)
+  - [Pipelines](https://lightning.ai/docs/platform/inference/pipelines.md)
+  - [Turn-key models](https://lightning.ai/docs/platform/inference/turn-key-models.md)
+- [Train](https://lightning.ai/docs/platform/train.md): Train, finetune, and pretrain models on Lightning AI — from low-code finetuning recipes to multi-node pretraining runs.
+  - [Experiment Management](https://lightning.ai/docs/platform/train/experiment-management.md)
+  - [Multi-node](https://lightning.ai/docs/platform/train/multi-node-training.md)
+  - [Pretrain models](https://lightning.ai/docs/platform/train/pretrain-models.md)
+  - [Finetune models](https://lightning.ai/docs/platform/train/finetune-models.md)
+  - [Using data](https://lightning.ai/docs/platform/train/using-data.md)
+  - [Examples (low code)](https://lightning.ai/docs/platform/train/examples-low-code.md)
+  - [Examples (full code)](https://lightning.ai/docs/platform/train/examples-full-code.md)
+- [Gpu Cloud](https://lightning.ai/docs/platform/gpu-cloud.md)
+  - [Overview](https://lightning.ai/docs/platform/gpu-cloud/overview.md)
+  - [GPU marketplace](https://lightning.ai/docs/platform/gpu-cloud/gpu-marketplace.md)
+  - [Clusters](https://lightning.ai/docs/platform/gpu-cloud/clusters.md)
+  - [Bring your own cloud](https://lightning.ai/docs/platform/gpu-cloud/bring-your-own-cloud.md)
+- [Data](https://lightning.ai/docs/platform/data.md)
+  - [Overview](https://lightning.ai/docs/platform/data/overview.md)
+  - [Upload data](https://lightning.ai/docs/platform/data/upload-data.md)
+  - [Move data](https://lightning.ai/docs/platform/data/move-data.md)
+  - [Drive](https://lightning.ai/docs/platform/data/drive.md)
+  - [Datasets](https://lightning.ai/docs/platform/data/datasets.md)
+  - [Data connections](https://lightning.ai/docs/platform/data/data-connections.md)
+  - [Cloud folders](https://lightning.ai/docs/platform/data/cloud-folders.md)
+  - [Artifacts](https://lightning.ai/docs/platform/data/artifacts.md)
+  - [Switch clouds](https://lightning.ai/docs/platform/data/switch-cloud-providers.md)
+  - [Use LitData](https://lightning.ai/docs/platform/data/use-litdata.md)
+  - [Data Prep Examples](https://lightning.ai/docs/platform/data/prep-data.md)
+- [Security](https://lightning.ai/docs/platform/security.md)
+  - [Compliance](https://lightning.ai/docs/platform/security/compliance.md)
+  - [Privacy](https://lightning.ai/docs/platform/security/privacy.md)
+  - [Security features](https://lightning.ai/docs/platform/security/security-features.md)
+  - [Trusted platform](https://lightning.ai/docs/platform/security/trusted-platform.md)
+- [Team Management](https://lightning.ai/docs/platform/team-management.md): Manage your organization, teamspaces, members, and team-wide collaboration on Lightning AI.
+  - [Organizations](https://lightning.ai/docs/platform/team-management/organizations.md)
+  - [Teamspaces](https://lightning.ai/docs/platform/team-management/teamspaces.md)
+- [Developers](https://lightning.ai/docs/platform/developers.md)
+  - [SDK](https://lightning.ai/docs/platform/developers/sdk.md)
+  - [CLI](https://lightning.ai/docs/platform/developers/cli.md)
+- Full index: https://lightning.ai/docs/manifests/platform.json
+
+## Open source docs
+
+One entry point per open-source library from the team behind PyTorch Lightning:
+
+- [PyTorch Lightning](https://lightning.ai/docs/pytorch/stable): Finetune and pretrain AI models. Focus on science, not engineering.
+- [Lightning Fabric](https://lightning.ai/docs/fabric/stable): Scale foundation models to 1000s of GPUs with expert-level control.
+- [TorchMetrics](https://lightning.ai/docs/torchmetrics/stable): 90+ PyTorch metrics, optimized for distributed training.
+- [Thunder](https://lightning.ai/docs/thunder/latest): Compiler for PyTorch: make PyTorch models faster.
+- [LitServe](https://lightning.ai/docs/litserve): Easily serve AI models, Lightning fast.
+- [LitData](https://lightning.ai/docs/litdata): Stream and process datasets at scale.
+- [LitGPT](https://github.com/Lightning-AI/litgpt): 20+ high-performance LLMs with recipes to pretrain, finetune and deploy at scale.
+
+## Searching the docs
+
+- Start at the worlds registry: https://lightning.ai/api/v1/docs/worlds — a JSON list of every docs "world" (Platform + the libraries). Each world has a `root` (or `multiRoot` with versioned `roots`); each root carries a `urlPrefix` (public URL, includes `/docs`) and a `manifestUrl`.
+- Pick a root and fetch its `manifestUrl` (e.g. https://lightning.ai/docs/manifests/platform.json) — it lists every page's path + a brief description plus the navigation tree (paths are world-relative). It can be large, so grep it for keywords to find the relevant pages rather than reading it whole.
+- A page's URL is `<urlPrefix>/<world-relative-path>`; append `.json` for its content or `.md` for plain markdown (e.g. https://lightning.ai/docs/platform/train.md), also reachable by requesting the page with `Accept: text/markdown`. Links inside a `.md` page point at sibling `.md` files; follow them to navigate.
+- Manifest entries may carry `restrictTo` (billing tier) or `featureFlags`; those pages apply only to specific users — don't surface or recommend them to a general user unless they ask about that tier/feature.
+
+## AI Discovery Files
+
+- [Docs worlds registry](https://lightning.ai/api/v1/docs/worlds): JSON index of every docs world with its roots and manifestUrl
+- [llms.txt](https://lightning.ai/llms.txt): this file

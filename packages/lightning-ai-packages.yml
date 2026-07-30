@@ -1,0 +1,134 @@
+generated: '2026-07-19'
+method: searched
+source: https://pypi.org/ + https://registry.npmjs.org/ + https://github.com/Lightning-AI
+notes: >-
+  Every package below was resolved live from the registry JSON API and confirmed
+  first-party by its homepage / repository pointing at lightning.ai or the
+  github.com/Lightning-AI organization. Versions are those observed on
+  2026-07-19. Two same-named packages were checked and EXCLUDED as not
+  first-party: npm "lightning-sdk" (an unrelated merchant point-of-sale SDK) and
+  npm "lightning-ai" (an npm security holding package).
+packages:
+- language: python
+  registry: pypi
+  name: lightning-sdk
+  version: 2026.7.9.post0
+  url: https://pypi.org/project/lightning-sdk/
+  install: pip install lightning-sdk -U
+  summary: SDK to develop using Lightning AI Studios
+  homepage: https://lightning.ai
+  official: true
+  role: platform-sdk
+  notes: Ships the `lightning` CLI binary; see cli/lightning-ai-cli.yml
+- language: javascript
+  registry: npm
+  name: '@lightningai/sdk'
+  version: 2026.7.9-post0
+  url: https://www.npmjs.com/package/@lightningai/sdk
+  install: npm install @lightningai/sdk
+  summary: >-
+    Lightning AI Sandbox SDK - create and manage sandboxes, run commands,
+    read/write files
+  repository: https://github.com/Lightning-AI/sdk
+  official: true
+  role: sandbox-sdk
+  notes: ESM-only, requires Node.js 22+
+- language: python
+  registry: pypi
+  name: litai
+  version: 0.0.10
+  url: https://pypi.org/project/litai/
+  install: pip install litai
+  summary: Easiest way to access any AI model with a single subscription
+  homepage: https://github.com/Lightning-AI/LitAI
+  official: true
+  role: model-apis-client
+- language: python
+  registry: pypi
+  name: lightning
+  version: 2.6.5
+  url: https://pypi.org/project/lightning/
+  install: pip install lightning
+  summary: The Deep Learning framework to train, deploy, and ship AI products
+  homepage: https://github.com/Lightning-AI/lightning
+  official: true
+  role: open-source-framework
+- language: python
+  registry: pypi
+  name: pytorch-lightning
+  version: 2.6.5
+  url: https://pypi.org/project/pytorch-lightning/
+  install: pip install pytorch-lightning
+  summary: PyTorch Lightning is the lightweight PyTorch wrapper for ML researchers
+  homepage: https://github.com/Lightning-AI/lightning
+  official: true
+  role: open-source-framework
+- language: python
+  registry: pypi
+  name: litserve
+  version: 0.2.17
+  url: https://pypi.org/project/litserve/
+  install: pip install litserve
+  summary: Lightweight AI server
+  homepage: https://github.com/Lightning-AI/litserve
+  official: true
+  role: open-source-serving
+- language: python
+  registry: pypi
+  name: litdata
+  version: 0.2.61
+  url: https://pypi.org/project/litdata/
+  install: pip install litdata
+  summary: Stream and process datasets at scale
+  homepage: https://github.com/Lightning-AI/litdata
+  official: true
+  role: open-source-data
+- language: python
+  registry: pypi
+  name: torchmetrics
+  version: 1.9.0
+  url: https://pypi.org/project/torchmetrics/
+  install: pip install torchmetrics
+  summary: PyTorch native Metrics
+  homepage: https://github.com/Lightning-AI/torchmetrics
+  official: true
+  role: open-source-metrics
+- language: python
+  registry: pypi
+  name: lightning-thunder
+  version: 0.2.6
+  url: https://pypi.org/project/lightning-thunder/
+  install: pip install lightning-thunder
+  summary: Source-to-source compiler for PyTorch
+  homepage: https://github.com/Lightning-AI/lightning-thunder
+  official: true
+  role: open-source-compiler
+- language: python
+  registry: pypi
+  name: litgpt
+  version: 0.5.13
+  url: https://pypi.org/project/litgpt/
+  install: pip install litgpt
+  summary: >-
+    Hackable implementation of state-of-the-art open-source LLMs with recipes to
+    pretrain, finetune and deploy at scale
+  homepage: https://github.com/Lightning-AI/litgpt
+  official: true
+  role: open-source-llm
+registries_probed:
+- registry: pypi
+  result: 9 first-party packages found
+- registry: npm
+  result: 1 first-party package found (@lightningai/sdk)
+- registry: maven-central
+  result: none found
+- registry: nuget
+  result: none found
+- registry: pkg.go.dev
+  result: none found
+- registry: rubygems
+  result: none found
+- registry: packagist
+  result: none found
+- registry: crates.io
+  result: none found

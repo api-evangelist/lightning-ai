@@ -1,0 +1,41 @@
+generated: '2026-07-19'
+method: searched
+source: https://lightning.ai/sitemap.xml + https://status.lightning.ai/
+note: >-
+  Lightning AI publishes a status page and a releases page, but no versioning
+  policy, deprecation policy, Sunset/Deprecation header support or public SLA
+  could be found on its documentation site. Those are recorded as not published
+  rather than assumed. No OpenAPI exists, so no deprecated operations can be
+  derived.
+versioning:
+  scheme: calendar-versioned SDKs (no API version segment)
+  detail: >-
+    The platform SDKs ship on CalVer and in lockstep across languages
+    (lightning-sdk 2026.7.9.post0 on PyPI, @lightningai/sdk 2026.7.9-post0 on
+    npm). The open-source libraries use SemVer (pytorch-lightning 2.6.5,
+    litserve 0.2.17, torchmetrics 1.9.0). No version path segment or version
+    header is documented for the control-plane API.
+  policy_url: null
+deprecation:
+  policy_url: null
+  sunset_header: not documented
+  deprecation_header: not documented
+  published: false
+sla:
+  url: null
+  uptime_target: not published
+status_page:
+  url: https://status.lightning.ai/
+  provider: Atlassian Statuspage
+  verified: true
+  title: Lightning AI Status
+  description: Real-time and historical data on system performance
+releases:
+  url: https://lightning.ai/pages/releases/
+  source: https://lightning.ai/sitemap.xml
+  artifact: changelog/lightning-ai-changelog.yml
+support:
+  help: https://lightning.ai/docs/platform/overview/faq/get-help
+  community: https://lightning.ai/community/
+  email: support@lightning.ai
+deprecated_operations: []

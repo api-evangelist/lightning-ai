@@ -1,0 +1,32 @@
+generated: '2026-07-19'
+method: searched
+source: https://lightning.ai/docs/platform/inference/model-apis
+docs: https://lightning.ai/docs/platform/inference/model-apis
+applies_to: Lightning AI Model APIs (hosted inference)
+note: >-
+  These are the per-plan ceilings published verbatim in the Model APIs
+  documentation. Lightning AI does not document the response headers used to
+  signal remaining quota, and publishes no rate limits for the platform control
+  plane, so only the inference limits are recorded here.
+units:
+  requests: requests per minute
+  tokens: tokens per minute
+rate_limits:
+- plan: Free
+  requests_per_minute: 15
+  tokens_per_minute: 120000
+- plan: Pro
+  requests_per_minute: 20
+  tokens_per_minute: 120000
+- plan: Teams
+  requests_per_minute: 30
+  tokens_per_minute: 150000
+- plan: Enterprise
+  requests_per_minute: 300
+  tokens_per_minute: null
+  tokens_per_minute_label: Unlimited
+free_allowance:
+  tokens_per_month: 30000000
+  description: Every user gets 30 million free tokens per month
+headers:
+  documented: false

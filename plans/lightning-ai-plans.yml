@@ -1,0 +1,66 @@
+generated: '2026-07-19'
+method: searched
+source: https://lightning.ai/docs/platform/overview/faq/billing
+docs:
+- https://lightning.ai/pricing/
+- https://lightning.ai/docs/platform/overview/faq/billing
+note: >-
+  Plan names, storage ceilings, credit mechanics and rate ceilings are published
+  verbatim in the billing FAQ and the Model APIs page. Per-GPU hourly rates live
+  on the pricing page, which is a client-rendered single-page app and could not
+  be captured as text; the pricing URL is recorded instead of guessing rates.
+currency: USD
+credit_model:
+  unit: Lightning credit
+  conversion: 1 Lightning credit = 1 USD
+  billed:
+  - activity: Running machines (Studios or Jobs)
+    granularity: per second
+    note: Only for machines not marked as Free
+  - activity: Drive storage above 10 GB
+    granularity: billed daily
+    rate: $0.10 / GB / month
+  expiry: Purchased credits expire after 1 year
+  free_credits:
+    description: Eligible free-plan users receive promotional credits usable for
+      compute, inference and storage
+    conditions:
+    - Promotional, non-transferable, do not accumulate
+    - Lightning may change or limit grants, eligibility, usage rules or expiration
+      at any time
+plans:
+- name: Free
+  storage_limit: 50 GB
+  free_storage: 10 GB
+  included_credits: null
+  model_api_requests_per_minute: 15
+  model_api_tokens_per_minute: 120000
+  includes:
+  - One free 4-CPU Studio
+  - First 10 GB of Drive storage free
+  - 30 million free Model API tokens per month
+- name: Pro
+  storage_limit: 200 GB
+  free_storage: 10 GB
+  included_credits: 40 credits per month
+  model_api_requests_per_minute: 20
+  model_api_tokens_per_minute: 120000
+  includes:
+  - 40 monthly credits (expire after 1 year; renewal adds another 40)
+  - Access to more powerful GPUs
+- name: Teams
+  storage_limit: 2 TB
+  free_storage: 10 GB
+  model_api_requests_per_minute: 30
+  model_api_tokens_per_minute: 150000
+- name: Enterprise
+  storage_limit: Unlimited
+  free_storage: 10 GB
+  model_api_requests_per_minute: 300
+  model_api_tokens_per_minute: Unlimited
+  includes:
+  - Bring your own cloud (VPC) deployment
+  - Data residency controls
+support:
+  billing: support@lightning.ai
+  sales: sales@lightning.ai

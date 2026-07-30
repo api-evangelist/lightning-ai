@@ -1,0 +1,99 @@
+generated: '2026-07-19'
+method: searched
+source: https://lightning.ai/docs/platform/developers/sdk/sandbox/python-sandbox-sdk
+docs:
+- https://lightning.ai/docs/platform/developers/sdk/sandbox/python-sandbox-sdk
+- https://lightning.ai/docs/platform/developers/sdk/sandbox/js-sandbox-sdk
+format: sdk-exception
+rfc9457: false
+note: >-
+  Lightning AI publishes no OpenAPI definition and no dedicated error-code
+  reference page, so this catalog cannot be derived from spec 4xx/5xx responses.
+  It is captured from the error conditions the SDK reference documents
+  explicitly. Every entry below appears verbatim in the docs; no error codes are
+  invented.
+envelope:
+  style: >-
+    Control-plane HTTP failures are re-raised by the SDK as a language-native
+    exception whose message embeds the upstream status and server message.
+  pattern: 'Lightning API error <http_status>: <message>'
+  example: 'RuntimeError: Lightning API error 500: failed to create sandbox'
+errors:
+- id: authentication-failed
+  exception: ConnectionError
+  message: Authentication failed. Please run 'lightning login'.
+  cause: >-
+    The name-resolution auth path has no credentials - typically
+    LIGHTNING_SANDBOX_API_KEY is set but the user never ran lightning login. The
+    sandbox API key is not used for teamspace name resolution.
+  remediation: Use a teamspace-scoped key and omit the teamspace argument, or run
+    lightning login.
+- id: personal-login-key-rejected
+  exception: RuntimeError
+  message: '...not your personal login key...'
+  cause: >-
+    A personal login key was supplied where a teamspace-scoped key is required,
+    or the credential environment variable was set after the Python SDK was
+    imported (env credentials are read once, at import).
+  remediation: Set the env var in the shell before the process starts, or pass the
+    key in-process via Sandbox.configure() / config=.
+- id: user-org-does-not-exist
+  exception: ValueError
+  message: User org does not exist.
+  cause: >-
+    A teamspace="owner/teamspace" string was resolved but the owner or teamspace
+    is wrong or misspelled. The resolver tries the owner as both an org and a
+    user and reports the user failure even when an org with that slug exists.
+  remediation: Verify the exact owner/teamspace string from the UI teamspace URL,
+    or skip resolution by using a teamspace-scoped key and omitting teamspace=.
+  docs_note: The documentation flags this message as misleading.
+- id: sandbox-not-ready
+  exception: RuntimeError
+  message: Sandbox did not become ready
+  cause: Creation polls until status is running; the sandbox instead reached a
+    terminal state.
+  terminal_states:
+  - error
+  - stopped
+  - shutdown
+  remediation: Inspect the terminal state and re-create the sandbox.
+- id: create-transient-500
+  status: 500
+  exception: RuntimeError
+  message: 'Lightning API error 500: failed to create sandbox'
+  cause: >-
+    A documented transient server-side failure of Sandbox.create(). Explicitly
+    NOT a quota issue - it occurs even with only a few sandboxes in the
+    organization.
+  remediation: >-
+    The SDK does not auto-retry create; call it again, ideally with a short
+    backoff.
+  retryable: true
+- id: sandbox-not-found
+  status: 404
+  cause: The referenced sandbox no longer exists.
+  behavior: >-
+    Handled rather than raised on delete() - a 404 returns cleanly, making
+    delete() idempotent.
+  remediation: None required for delete; for other operations re-create or re-list
+    the sandbox.
+- id: command-wait-timeout
+  exception: TimeoutError
+  cause: >-
+    cmd.wait(timeout=...) or sandbox.wait_for_command(cmd_id, timeout=...)
+    exceeded the caller-supplied timeout.
+  behavior: >-
+    Raises rather than returning a partial status; the command keeps running on
+    the sandbox and the timeout only bounds the caller's wait.
+  remediation: Re-wait with a longer timeout, or poll the command status.
+- id: slug-not-enabled
+  cause: Sandbox slugs are not enabled on the cluster.
+  behavior: Fails at Sandbox.create() with an API error.
+  remediation: Create the sandbox without a slug, or enable the feature on the
+    cluster.
+- id: dns-resolution-failure
+  exception: socket.gaierror
+  message: '[Errno -2] Name or service not known'
+  cause: Network egress from inside the sandbox is blocked or the host is
+    unresolvable, typically under a restrictive NetworkPolicy.
+  remediation: Widen the NetworkPolicy allowCidrs passed at sandbox create time.

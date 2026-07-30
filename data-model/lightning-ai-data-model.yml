@@ -1,0 +1,140 @@
+generated: '2026-07-19'
+method: derived
+source: >-
+  Derived from the published SDK/CLI reference (no OpenAPI is available):
+  https://lightning.ai/docs/platform/developers/sdk and the sandbox, studio,
+  batch, multi-machine and team-management docs.
+note: >-
+  Lightning AI publishes no OpenAPI definition, so this entity graph is derived
+  from the documented SDK classes, CLI command groups and team-management
+  concepts rather than from schema $refs. Relationships reflect the documented
+  containment and scoping model. No id prefixes or field names are asserted
+  beyond those the docs show.
+entities:
+- name: Organization
+  description: Top-level account that owns teamspaces, members and API keys.
+  docs: https://lightning.ai/docs/platform/team-management/organizations
+- name: Teamspace
+  description: >-
+    Collaboration scope inside an organization that owns resources. An API key
+    is scoped to a teamspace, and that scoping is how the SDKs select a project.
+  docs: https://lightning.ai/docs/platform/team-management/teamspaces
+  identified_by: owner/teamspace slug
+- name: ApiKey
+  description: Credential scoped to a teamspace and a role; prefix sk-lit-.
+  docs: https://lightning.ai/docs/platform/build/sandbox
+- name: Studio
+  description: Persistent, interactive GPU- or CPU-backed development workspace.
+  docs: https://lightning.ai/docs/platform/build/ai-studio
+- name: Sandbox
+  description: >-
+    Ephemeral, isolated Linux environment with its own filesystem, network stack
+    and dedicated compute.
+  docs: https://lightning.ai/docs/platform/build/sandbox
+  states:
+  - running
+  - stopped
+  - paused
+  - error
+  - shutdown
+- name: Snapshot
+  description: Saved sandbox filesystem that can be restored into a new sandbox.
+- name: Command
+  description: A running or finished command executed inside a sandbox.
+- name: PtySession
+  description: Interactive pseudo-terminal session attached to a sandbox.
+- name: NetworkPolicy
+  description: Egress firewall policy (allowCidrs) applied to a sandbox at create
+    time.
+- name: Job
+  description: Batch job that runs code in the cloud at scale.
+  docs: https://lightning.ai/docs/platform/developers/cli/batch
+- name: MultiMachineJob
+  description: Multi-node distributed training job (MMT).
+  docs: https://lightning.ai/docs/platform/developers/cli/multi-machine
+- name: Deployment
+  description: Model or app turned into a scalable production service endpoint.
+  docs: https://lightning.ai/docs/platform/developers/sdk/deployment
+- name: VM
+  description: Virtual machine managed through the SDK.
+  docs: https://lightning.ai/docs/platform/developers/sdk/vms
+- name: Cluster
+  description: Compute cluster, including bring-your-own-cloud VPC clusters.
+  docs: https://lightning.ai/docs/platform/developers/sdk/clusters
+- name: Drive
+  description: Persistent storage volume; first 10 GB free, then billed per GB.
+  docs: https://lightning.ai/docs/platform/data/drive
+- name: Dataset
+  description: Managed dataset used by training and data workflows.
+  docs: https://lightning.ai/docs/platform/data/datasets
+- name: DataConnection
+  description: Connection to external cloud storage; not billed as Drive storage.
+  docs: https://lightning.ai/docs/platform/data/data-connections
+- name: Model
+  description: Hosted model served through the Model APIs inference surface.
+  docs: https://lightning.ai/docs/platform/inference/model-apis
+relationships:
+- from: Organization
+  to: Teamspace
+  type: has_many
+- from: Organization
+  to: ApiKey
+  type: has_many
+- from: ApiKey
+  to: Teamspace
+  type: belongs_to
+  via: teamspace scope
+- from: Teamspace
+  to: Studio
+  type: has_many
+- from: Teamspace
+  to: Sandbox
+  type: has_many
+  via: project_id
+- from: Teamspace
+  to: Job
+  type: has_many
+- from: Teamspace
+  to: MultiMachineJob
+  type: has_many
+- from: Teamspace
+  to: Deployment
+  type: has_many
+- from: Teamspace
+  to: Drive
+  type: has_many
+- from: Teamspace
+  to: Dataset
+  type: has_many
+- from: Sandbox
+  to: Command
+  type: has_many
+- from: Sandbox
+  to: Snapshot
+  type: has_many
+- from: Sandbox
+  to: PtySession
+  type: has_many
+- from: Sandbox
+  to: NetworkPolicy
+  type: has_one
+  via: create-time argument
+- from: Snapshot
+  to: Sandbox
+  type: belongs_to
+  via: snapshot_id restore
+- from: Job
+  to: Cluster
+  type: belongs_to
+- from: MultiMachineJob
+  to: Cluster
+  type: belongs_to
+- from: Deployment
+  to: Cluster
+  type: belongs_to
+- from: Dataset
+  to: Drive
+  type: belongs_to
+- from: DataConnection
+  to: Teamspace
+  type: belongs_to

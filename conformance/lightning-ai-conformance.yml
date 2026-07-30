@@ -1,0 +1,111 @@
+generated: '2026-07-19'
+method: searched
+source: https://lightning.ai/docs/platform/security/compliance
+docs:
+- https://lightning.ai/docs/platform/security/compliance
+- https://lightning.ai/docs/platform/security/trusted-platform
+- https://lightning.ai/docs/platform/security/security-features
+note: >-
+  Compliance certifications below are claimed explicitly by Lightning AI on its
+  own compliance documentation. Reports are gated behind a due-diligence request
+  to sales@lightning.ai rather than published on a self-serve trust portal, so
+  they are recorded as claimed-not-independently-verified. Technical standards
+  are asserted only where the documentation shows them; Lightning AI publishes
+  no OpenAPI, so spec-derived assertions are marked unknown rather than false.
+compliance_program:
+  published: true
+  url: https://lightning.ai/docs/platform/security/compliance
+  due_diligence_package:
+    available: true
+    request_via: sales@lightning.ai
+    contents:
+    - ISO certifications
+    - Annual penetration test confirmation letter
+    - Enterprise Security Guide
+    - HIPAA report
+    - SOC 2 Type II report
+certifications:
+- id: soc2-type2
+  name: SOC 2 Type II
+  claimed: true
+  evidence: 'Compliance docs: "Lightning AI is SOC2 certified. Email sales@lightning.ai
+    to request our SOC 2 Type II report."'
+  report_access: on request
+- id: hipaa
+  name: HIPAA
+  claimed: true
+  evidence: 'Compliance docs: "Lightning AI is HIPAA certified. Request our report
+    by contacting sales@lightning.ai."'
+  report_access: on request
+- id: iso-27001-family
+  name: ISO certifications
+  claimed: true
+  evidence: Listed among the contents of the due diligence package
+  note: The docs reference "our ISO certifications" without naming the specific
+    standard numbers
+- id: penetration-test
+  name: Annual penetration test
+  claimed: true
+  evidence: Annual pen test confirmation letter included in the due diligence
+    package
+- id: gdpr-dpa
+  name: GDPR / Data Processing Addendum
+  claimed: true
+  evidence: Lightning AI can execute a Data Processing Addendum; subprocessors
+    published at https://lightning.ai/legal/sub-processors/
+  url: https://lightning.ai/docs/platform/security/compliance/data-processing-addendum
+- id: cpra
+  name: California Privacy Rights Act (Prop 24)
+  claimed: true
+  evidence: >-
+    Compliance docs state customers can restrict sharing of personal
+    information, correct inaccuracies, and limit use of sensitive data
+- id: pci-dss
+  name: PCI DSS
+  claimed: false
+  evidence: Not claimed; Lightning AI is not a payments provider
+- id: fedramp
+  name: FedRAMP
+  claimed: false
+  evidence: Not claimed in published compliance documentation
+standards:
+- id: oauth2
+  conforms: false
+  evidence: No OAuth 2.0 surface is documented; the platform authenticates with
+    teamspace-scoped API keys
+- id: oidc
+  conforms: false
+  evidence: No OpenID Connect discovery document is published
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors surface as SDK exceptions embedding the upstream HTTP status
+    ("Lightning API error <status>: <message>"), not application/problem+json
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns the single-page-app shell, not an
+    RFC 9116 document
+- id: openai-chat-completions
+  conforms: true
+  evidence: >-
+    Model APIs are callable with the OpenAI Python SDK, and the docs publish an
+    Anthropic-compatible configuration (ANTHROPIC_BASE_URL=https://lightning.ai/)
+  source: https://lightning.ai/docs/platform/inference/model-apis
+- id: oci-images
+  conforms: true
+  evidence: Sandboxes support bringing your own OCI image
+- id: openapi
+  conforms: false
+  evidence: No OpenAPI or Swagger definition is published for the platform API
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface is documented
+data_residency:
+  supported: true
+  url: https://lightning.ai/docs/platform/security/privacy/data-residency
+  evidence: Lightning AI can help comply with requirements for data to be stored
+    and processed in specific geographic boundaries
+deployment_models:
+- name: Lightning Cloud (fully managed SaaS)
+- name: Bring your own cloud (VPC)
+  note: Documented as the most common enterprise deployment method

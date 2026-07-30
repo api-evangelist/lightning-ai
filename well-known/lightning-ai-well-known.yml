@@ -1,0 +1,77 @@
+generated: '2026-07-19'
+method: searched
+host: https://lightning.ai
+result: none-published
+note: >-
+  IMPORTANT - lightning.ai is a client-rendered single-page application that
+  returns HTTP 200 with an identical 19,519-byte HTML shell for EVERY unmatched
+  path, including a deliberately nonsensical control path. A raw 200 status is
+  therefore not evidence a document exists. Each probe below was content-checked:
+  every /.well-known/ path returned the SPA shell rather than a real document, so
+  Lightning AI publishes no /.well-known/ discovery surface. No WellKnown or
+  SecurityTxt pointer is wired into apis.yml because there is nothing to point
+  at. The site does publish a real /llms.txt and a real /sitemap.xml, both
+  captured.
+control_probe:
+  path: /this-path-does-not-exist-xyz123
+  http_status: 200
+  bytes: 19519
+  conclusion: SPA catch-all confirmed; status codes are not meaningful on this host
+documents:
+- path: /.well-known/security.txt
+  http_status: 200
+  content_type: text/html
+  published: false
+  reason: SPA shell, not an RFC 9116 document
+- path: /.well-known/openid-configuration
+  http_status: 200
+  content_type: text/html
+  published: false
+  reason: SPA shell, not an OIDC discovery document
+- path: /.well-known/oauth-authorization-server
+  http_status: 200
+  content_type: text/html
+  published: false
+  reason: SPA shell, not an RFC 8414 document
+- path: /.well-known/api-catalog
+  http_status: 200
+  content_type: text/html
+  published: false
+  reason: SPA shell, not an RFC 9727 API catalog
+- path: /.well-known/ai-plugin.json
+  http_status: 200
+  content_type: text/html
+  published: false
+  reason: SPA shell, not a plugin manifest
+- path: /security.txt
+  http_status: 200
+  content_type: text/html
+  published: false
+  reason: SPA shell
+real_discovery_documents:
+- path: /llms.txt
+  http_status: 200
+  content_type: text/plain
+  bytes: 7827
+  published: true
+  file: ../llms/lightning-ai-llms.txt
+- path: /robots.txt
+  http_status: 200
+  published: true
+  note: 'Points AI agents at /llms.txt: "AI agents: LLM-friendly site/docs guidance
+    lives at /llms.txt"'
+- path: /sitemap.xml
+  http_status: 200
+  published: true
+  urls: 18
+- path: /api/v1/docs/worlds
+  http_status: 200
+  content_type: application/json
+  published: true
+  note: Documentation "worlds" registry - a JSON index of every docs root and its
+    manifestUrl
+- path: /docs/manifests/platform.json
+  http_status: 200
+  content_type: application/json
+  published: true
+  note: Full platform docs manifest (314 pages)

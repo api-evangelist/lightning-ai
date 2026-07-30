@@ -1,0 +1,82 @@
+generated: '2026-07-19'
+method: searched
+source: https://lightning.ai/docs/platform/build/sandbox
+docs: https://lightning.ai/docs/platform/build/sandbox
+kind: compute-sandbox
+important_note: >-
+  Lightning AI is not a payments or transactional provider, so it publishes no
+  test-mode keys, test cards or magic test values. What it does publish - and
+  what this artifact captures - is a first-class product named Sandbox: isolated,
+  on-demand Linux environments developers create programmatically to run
+  untrusted or agent-generated code. Alongside it, AI Studios provide the
+  interactive browser console. No test credentials are invented here; every value
+  below is published in the docs.
+summary: >-
+  Lightning AI Sandbox gives every workload its own isolated Linux environment,
+  started in milliseconds and torn down on completion. It is used to run
+  LLM-generated code safely, isolate untrusted third-party scripts, test
+  repositories, and power code playgrounds and live preview environments.
+interfaces:
+- name: Python SDK
+  package: lightning-sdk
+  entrypoint: from lightning_sdk import Sandbox
+  docs: https://lightning.ai/docs/platform/developers/sdk/sandbox/python-sandbox-sdk
+- name: JavaScript SDK
+  package: '@lightningai/sdk'
+  entrypoint: import { Sandbox } from "@lightningai/sdk"
+  docs: https://lightning.ai/docs/platform/developers/sdk/sandbox/js-sandbox-sdk
+  requires: Node.js 22+, ESM-only
+- name: CLI
+  command: lightning sandbox
+  docs: https://lightning.ai/docs/platform/developers/cli/sandbox
+authentication:
+  env_var: LIGHTNING_SANDBOX_API_KEY
+  fallback_env_var: LIGHTNING_API_KEY
+  key_prefix: sk-lit-
+  scope: teamspace-scoped API key (recommended)
+  base_url_env_var: LIGHTNING_CLOUD_URL
+  base_url_default: https://lightning.ai
+  provisioning: Organization settings -> Members -> API keys -> Create API Key
+    (Name, Description, Role, Teamspace)
+runtimes:
+- python313
+- node22
+- node24
+instance_types_documented:
+- cpu-1
+features:
+- name: Isolation
+  detail: Filesystem, network and processes isolated from everything else
+- name: Root access
+  detail: sudo available in every sandbox; system-privileged processes supported
+- name: Fast startup
+  detail: Sandboxes start in milliseconds
+- name: Persistent sandboxes
+  detail: Auto-save state on stop, resume where you left off
+- name: Snapshotting
+  detail: Save a running sandbox filesystem and restore it later to skip dependency
+    installation
+- name: PTY sessions
+  detail: Interactive terminal sessions via sandbox.process.createPty()
+- name: Network policy
+  detail: Egress firewall policy (NetworkPolicy with allowCidrs) passed at create
+    time
+- name: Custom images
+  detail: Bring your own OCI image
+- name: Live preview URLs
+  detail: Run a development server inside a sandbox and reach it via a preview URL
+console:
+  name: Lightning AI Studio
+  description: >-
+    Browser-based persistent development workspace used as the interactive
+    console for the platform.
+  url: https://lightning.ai/docs/platform/build/ai-studio
+  free_tier: Every account includes one free 4-CPU Studio and the first 10 GB of
+    Drive storage
+free_allowances:
+- allowance: 30 million free Model API tokens per month for every user
+  source: https://lightning.ai/docs/platform/inference/model-apis
+- allowance: One free 4-CPU Studio per account
+  source: https://lightning.ai/docs/platform/overview/faq/billing
+- allowance: First 10 GB of Drive storage free
+  source: https://lightning.ai/docs/platform/overview/faq/billing

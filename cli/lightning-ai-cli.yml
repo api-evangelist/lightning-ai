@@ -1,0 +1,91 @@
+generated: '2026-07-19'
+method: searched
+source: https://lightning.ai/docs/platform/developers/cli
+docs: https://lightning.ai/docs/platform/developers/cli
+name: lightning
+description: >-
+  The Lightning CLI manages Studios, Jobs, multi-machine training, Sandboxes,
+  Deployments and VMs from the terminal. It ships inside the lightning-sdk
+  Python package rather than as a standalone binary.
+binary: lightning
+install:
+- method: pip
+  command: pip install lightning-sdk -U
+  package: lightning-sdk
+  registry: pypi
+authentication:
+- method: interactive
+  command: lightning login
+- method: environment
+  variables:
+  - LIGHTNING_USER_ID
+  - LIGHTNING_API_KEY
+usage: lightning [command]
+help: lightning COMMAND --help
+command_groups:
+- group: auth
+  description: Authenticate the CLI against a Lightning account
+  commands:
+  - command: lightning login
+    description: Authenticate interactively
+- group: studio
+  description: Create, run and access Studios (persistent development workspaces)
+  docs: https://lightning.ai/docs/platform/developers/cli/studio
+  commands:
+  - command: lightning studio create
+  - command: lightning studio list
+  - command: lightning studio start
+  - command: lightning studio stop
+  - command: lightning studio ssh
+  - command: lightning studio cp
+  - command: lightning studio switch
+- group: job
+  description: Submit, list, stop and delete batch jobs
+  docs: https://lightning.ai/docs/platform/developers/cli/batch
+  commands:
+  - command: lightning job run
+  - command: lightning job list
+  - command: lightning job stop
+  - command: lightning job delete
+- group: mmt
+  description: Submit, list, stop and delete multi-machine training jobs
+  docs: https://lightning.ai/docs/platform/developers/cli/multi-machine
+  commands:
+  - command: lightning mmt run
+  - command: lightning mmt list
+  - command: lightning mmt stop
+  - command: lightning mmt delete
+- group: sandbox
+  description: >-
+    Create and control ephemeral, isolated Linux sandboxes - run commands,
+    stream logs, and manage filesystem snapshots
+  docs: https://lightning.ai/docs/platform/developers/cli/sandbox
+  commands:
+  - command: lightning sandbox create
+  - command: lightning sandbox list
+  - command: lightning sandbox run
+  - command: lightning sandbox command
+  - command: lightning sandbox commands
+  - command: lightning sandbox logs
+  - command: lightning sandbox snapshot
+  - command: lightning sandbox start
+  - command: lightning sandbox stop
+  - command: lightning sandbox update
+  - command: lightning sandbox delete
+key_flows:
+- flow: Develop in the cloud
+  steps:
+  - lightning login
+  - lightning studio create
+  - lightning studio ssh
+- flow: Run a batch job
+  steps:
+  - lightning job run
+  - lightning job list
+  - lightning job stop
+- flow: Run untrusted or agent-generated code
+  steps:
+  - lightning sandbox create
+  - lightning sandbox run
+  - lightning sandbox snapshot
+  - lightning sandbox delete

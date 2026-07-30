@@ -1,0 +1,95 @@
+generated: '2026-07-19'
+method: searched
+source: https://lightning.ai/docs/platform/developers/sdk
+docs:
+- https://lightning.ai/docs/platform/developers/sdk/sandbox/python-sandbox-sdk
+- https://lightning.ai/docs/platform/developers/sdk/sandbox/js-sandbox-sdk
+- https://lightning.ai/docs/platform/inference/model-apis
+note: >-
+  Lightning AI does not publish a REST API reference or an OpenAPI definition;
+  the documented contract is the SDK/CLI surface over the control plane. These
+  conventions are captured from that published surface. Fields the provider does
+  not document are recorded as "not documented" rather than guessed.
+authentication:
+  style: API key
+  detail: Teamspace-scoped Lightning API key (sk-lit- prefix) supplied via SDK
+    configure() or environment variable
+  artifact: authentication/lightning-ai-authentication.yml
+base_url:
+  production: https://lightning.ai
+  override_env_var: LIGHTNING_CLOUD_URL
+  note: Both the platform control plane and the Model APIs are documented against
+    the https://lightning.ai origin
+idempotency:
+  idempotency_key_header: false
+  detail: >-
+    Lightning AI documents NO Idempotency-Key header or client-supplied
+    idempotency token. It does document operation-level idempotency for
+    destructive calls: sandbox delete() is idempotent - a 404 for an
+    already-deleted sandbox returns cleanly rather than raising.
+  idempotent_operations:
+  - Sandbox.delete()
+compatibility:
+  model_apis:
+    openai_compatible: true
+    anthropic_compatible: true
+    detail: >-
+      Model APIs can be called with the litai client, the OpenAI Python SDK, or
+      an Anthropic-compatible client by pointing ANTHROPIC_BASE_URL at
+      https://lightning.ai/ - so OpenAI/Anthropic request and response envelope
+      conventions apply to the inference surface.
+pagination:
+  documented: false
+  detail: >-
+    The SDKs expose list operations (Sandbox.list, Sandbox.listSnapshots,
+    lightning studio list, lightning job list) but no cursor or offset
+    pagination parameters are documented.
+versioning:
+  scheme: calendar-versioned SDKs
+  detail: >-
+    The platform SDKs are released on a CalVer scheme (lightning-sdk
+    2026.7.9.post0, @lightningai/sdk 2026.7.9-post0, released in lockstep). The
+    open-source libraries are SemVer (pytorch-lightning 2.6.5). No API version
+    path segment or version header is documented for the control plane.
+  artifact: lifecycle/lightning-ai-lifecycle.yml
+error_envelope:
+  style: SDK exception over HTTP status
+  detail: >-
+    Control-plane failures surface as SDK exceptions carrying the upstream HTTP
+    status and message, in the form "Lightning API error <status>: <message>".
+    Client-side validation failures raise native language errors (ValueError,
+    TimeoutError).
+  artifact: errors/lightning-ai-error-codes.yml
+rate_limit_signaling:
+  documented_limits: true
+  header_signaling: not documented
+  detail: >-
+    Model APIs publish per-plan requests-per-minute and tokens-per-minute
+    ceilings, but the response headers used to signal remaining quota are not
+    documented.
+  artifact: rate-limits/lightning-ai-rate-limits.yml
+async_operations:
+  detail: >-
+    Long-running work is modelled as poll-until-terminal. Sandbox creation polls
+    until status is running; terminal states are running, error, stopped and
+    shutdown. Commands are awaited with wait(timeout=, poll_interval=), and a
+    timeout raises TimeoutError while the remote command keeps running.
+  terminal_states:
+  - running
+  - error
+  - stopped
+  - shutdown
+resource_scoping:
+  hierarchy: Organization -> Teamspace -> resource
+  detail: >-
+    Resources belong to a teamspace inside an organization. A teamspace-scoped
+    API key implicitly selects the project; a user-level key requires an
+    explicit teamspace argument for name-based lookups.
+  artifact: data-model/lightning-ai-data-model.yml
+request_tracing:
+  request_id_header: not documented
+metadata:
+  detail: Sandboxes accept a name and optional slug at create time; no
+    general-purpose key/value metadata bag is documented.
+field_expansion:
+  documented: false

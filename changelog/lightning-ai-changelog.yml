@@ -1,0 +1,92 @@
+generated: '2026-07-19'
+method: searched
+source: https://api.github.com/repos/Lightning-AI/* releases
+note: >-
+  Lightning AI publishes a platform releases page at
+  https://lightning.ai/pages/releases/ (declared in its sitemap), but that page
+  is a client-rendered single-page app whose dated entries could not be captured
+  as text, and the platform docs contain no changelog. The structured entries
+  below are therefore the dated, versioned release stream of the first-party
+  open-source libraries, read live from the GitHub Releases API. The platform
+  releases page is recorded as the canonical human changelog.
+canonical_changelog: https://lightning.ai/pages/releases/
+scheme:
+  platform_sdk: CalVer (lightning-sdk 2026.7.9.post0, @lightningai/sdk released in
+    lockstep)
+  open_source: SemVer
+current_versions:
+  lightning-sdk: 2026.7.9.post0
+  '@lightningai/sdk': 2026.7.9-post0
+  pytorch-lightning: 2.6.5
+  litserve: 0.2.17
+  litdata: 0.2.61
+  torchmetrics: 1.9.0
+  lightning-thunder: 0.2.6
+  litai: 0.0.10
+  litgpt: 0.5.13
+projects:
+- project: pytorch-lightning
+  repository: https://github.com/Lightning-AI/pytorch-lightning
+  releases: https://github.com/Lightning-AI/pytorch-lightning/releases
+  entries:
+  - version: 2.6.5
+    date: '2026-05-27'
+    title: Lightning 2.6.5
+  - version: 2.6.4
+    date: '2026-05-20'
+    title: Lightning 2.6.4
+  - version: 2.6.1
+    date: '2026-01-30'
+    title: Lightning v2.6.1
+- project: litdata
+  repository: https://github.com/Lightning-AI/litdata
+  releases: https://github.com/Lightning-AI/litdata/releases
+  entries:
+  - version: 0.2.63
+    date: '2026-05-28'
+    title: v0.2.63
+  - version: 0.2.61
+    date: '2026-02-20'
+    title: LitData v0.2.61
+  - version: 0.2.60
+    date: '2026-01-28'
+    title: Weekly Release 0.2.60
+- project: torchmetrics
+  repository: https://github.com/Lightning-AI/torchmetrics
+  releases: https://github.com/Lightning-AI/torchmetrics/releases
+  entries:
+  - version: 1.9.0
+    date: '2026-03-09'
+    title: Release v1.9.0
+  - version: 1.8.2
+    date: '2025-09-03'
+    title: Minor patch release
+  - version: 1.8.1
+    date: '2025-08-07'
+    title: Minor patch release
+- project: litserve
+  repository: https://github.com/Lightning-AI/LitServe
+  releases: https://github.com/Lightning-AI/LitServe/releases
+  entries:
+  - version: 0.2.17
+    date: '2025-12-23'
+    title: Release v0.2.17
+  - version: 0.2.16
+    date: '2025-10-14'
+    title: v0.2.16
+  - version: 0.2.15
+    date: '2025-07-31'
+    title: v0.2.15
+- project: lightning-thunder
+  repository: https://github.com/Lightning-AI/lightning-thunder
+  releases: https://github.com/Lightning-AI/lightning-thunder/releases
+  entries:
+  - version: 0.2.6
+    date: '2025-10-22'
+    title: Thunder 0.2.6 PyTorch Conference Edition
+  - version: 0.2.5
+    date: '2025-09-10'
+    title: Thunder 0.2.5 - Summer Harvest
+  - version: 0.2.4
+    date: '2025-06-24'
+    title: '0.2.4'
