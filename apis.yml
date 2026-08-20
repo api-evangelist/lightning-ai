@@ -38,6 +38,17 @@ modified: '2026-07-19'
 tags:
 - Company
 - Ai Ml
+- Machine-Learning
+- GPU Cloud
+- Model Inference
+- Model Training
+- Developer Platform
+- Sandboxes
+- LLM APIs
+- Open-Source
+tags_raw:
+- Company
+- Ai Ml
 - Machine Learning
 - GPU Cloud
 - Model Inference
@@ -56,6 +67,12 @@ apis:
   humanURL: https://lightning.ai/docs/platform/developers/sdk
   baseURL: https://lightning.ai
   tags:
+  - Platform
+  - Studios
+  - Job
+  - Deployment
+  - Sandboxes
+  tags_raw:
   - Platform
   - Studios
   - Jobs
