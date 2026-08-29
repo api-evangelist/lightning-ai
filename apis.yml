@@ -10,6 +10,17 @@ description: 'Lightning AI is an AI development platform from the team behind Py
   including PyTorch Lightning, Lightning Fabric, LitServe, LitData, TorchMetrics and
   Thunder. Lightning AI runs as a fully managed cloud or inside a customer VPC (bring
   your own cloud), and is SOC 2 Type II and HIPAA certified.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
