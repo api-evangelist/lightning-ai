@@ -32,7 +32,10 @@ accessModel:
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-09-03'
   method: derived
 image: https://avatars.githubusercontent.com/u/58386951?v=4
 url: https://raw.githubusercontent.com/api-evangelist/lightning-ai/refs/heads/main/apis.yml
