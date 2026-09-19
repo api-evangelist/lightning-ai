@@ -57,7 +57,7 @@ tags:
 - Model Inference
 - Model Training
 - Developer Platform
-- Sandboxes
+- Sandbox
 - LLM APIs
 - Open-Source
 tags_raw:
@@ -82,10 +82,10 @@ apis:
   baseURL: https://lightning.ai
   tags:
   - Platform
-  - Studios
+  - Studio
   - Job
   - Deployment
-  - Sandboxes
+  - Sandbox
   tags_raw:
   - Platform
   - Studios
