@@ -52,14 +52,14 @@ modified: '2026-07-19'
 tags:
 - Company
 - Ai Ml
-- Machine-Learning
+- Machine Learning
 - GPU Cloud
 - Model Inference
 - Model Training
 - Developer Platform
 - Sandbox
 - LLM APIs
-- Open-Source
+- Open Source
 tags_raw:
 - Company
 - Ai Ml
@@ -71,6 +71,8 @@ tags_raw:
 - Sandboxes
 - LLM APIs
 - Open Source
+- Machine-Learning
+- Open-Source
 apis:
 - aid: lightning-ai:platform-api
   name: Lightning AI Platform API
@@ -79,7 +81,6 @@ apis:
     manage platform resources: Studios, Jobs, Deployments, Sandboxes, Drives, Teamspaces
     and Organizations. Authenticated with a teamspace-scoped Lightning API key.'
   humanURL: https://lightning.ai/docs/platform/developers/sdk
-  baseURL: https://lightning.ai
   tags:
   - Platform
   - Studio
@@ -110,7 +111,6 @@ apis:
     through the litai Python client and through OpenAI- and Anthropic-compatible client
     configuration, with per-plan requests-per-minute and tokens-per-minute limits.'
   humanURL: https://lightning.ai/docs/platform/inference/model-apis
-  baseURL: https://lightning.ai
   tags:
   - Inference
   - LLM
