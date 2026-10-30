@@ -64,45 +64,109 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Lightning AI is an AI development platform from the team behind PyTorch Lightning. It provides cloud AI Studios (persistent GPU-backed development workspaces), ephemeral Sandboxes for running untrusted or agent-generated code, multi-node training and finetuning, batch and real-time inference deployments, and hosted Model APIs that expose frontier LLMs behind an API key.
+Lightning AI is an AI development platform from the team behind PyTorch Lightning. It provides cloud AI Studios (persistent GPU-backed development workspaces), ephemeral Sandboxes for running untrusted or agent-generated code, multi-node training and finetuning, batch and real-time inference deployments, and hosted Model APIs that expose frontier LLMs behind an API key. The platform is driven programmatically through the lightning-sdk Python SDK, the @lightningai/sdk JavaScript Sandbox SDK, and the lightning CLI, and is backed by a family of widely adopted open-source libraries including PyTorch Lightning, Lightning Fabric, LitServe, LitData, TorchMetrics and Thunder. Lightning AI runs as a fully managed cloud or inside a customer VPC (bring your own cloud), and is SOC 2 Type II and HIPAA certified.
 
-The platform is driven programmatically through the `lightning-sdk` Python SDK, the `@lightningai/sdk` JavaScript Sandbox SDK, and the `lightning` CLI, and is backed by a family of widely adopted open-source libraries including PyTorch Lightning, Lightning Fabric, LitServe, LitData, TorchMetrics and Thunder. Lightning AI runs as a fully managed cloud or inside a customer VPC, and is SOC 2 Type II and HIPAA certified.
+**Areas:** Company · Artificial Intelligence · Machine Learning · GPU Cloud · Model Inference · Model Training · Developer Platform · Sandbox · LLM APIs · Open Source
 
-- Website: https://lightning.ai/
-- Documentation: https://lightning.ai/docs/
-- GitHub: https://github.com/Lightning-AI
-- Status: https://status.lightning.ai/
+## Lightning AI on APIs.io
 
-Backed by: index-ventures, sv-angel
+Everything profiled for Lightning AI is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/lightning-ai/](https://apis.io/providers/lightning-ai/)** — or go straight to one of the APIs or properties below.
 
-## Artifacts
+### APIs (2)
 
-| Artifact | Path | Method |
-|---|---|---|
-| llms.txt | `llms/lightning-ai-llms.txt` | searched (verbatim) |
-| Packages / SDKs | `packages/lightning-ai-packages.yml` | searched |
-| CLI | `cli/lightning-ai-cli.yml` | searched |
-| Sandbox | `sandbox/lightning-ai-sandbox.yml` | searched |
-| Authentication | `authentication/lightning-ai-authentication.yml` | searched |
-| Conventions | `conventions/lightning-ai-conventions.yml` | searched |
-| Error catalog | `errors/lightning-ai-error-codes.yml` | searched |
-| Data model | `data-model/lightning-ai-data-model.yml` | derived |
-| Lifecycle | `lifecycle/lightning-ai-lifecycle.yml` | searched |
-| Conformance | `conformance/lightning-ai-conformance.yml` | searched |
-| Rate limits | `rate-limits/lightning-ai-rate-limits.yml` | searched |
-| Plans | `plans/lightning-ai-plans.yml` | searched |
-| Changelog | `changelog/lightning-ai-changelog.yml` | searched |
-| Well-known | `well-known/lightning-ai-well-known.yml` | searched (none published) |
-| Domain security | `security/lightning-ai-domain-security.yml` | probed |
+- [Lightning AI Platform API](https://apis.io/apis/lightning-ai/platform-api/) — The Lightning AI control-plane API used by the lightning-sdk Python SDK, the @lightningai/sdk JavaScript SDK and the lightning CLI to programmatically…
+- [Lightning AI Model APIs](https://apis.io/apis/lightning-ai/model-apis/) — Hosted inference API that serves frontier and open models behind a Lightning API key, billed per token with a free monthly token allowance. Accessible…
 
-## Not published by this provider
+### Published properties
 
-Recorded as honest negatives, not fabricated:
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **No OpenAPI / Swagger definition.** The documented contract is the SDK and CLI surface. This is why there is no `openapi/`, `overlays/`, `skills/`, `agentic-access/` or `arazzo/`.
-- **No `/.well-known/` surface.** `lightning.ai` is a single-page app that returns HTTP 200 with an identical shell for every unmatched path, so status codes are not meaningful there — every probe was content-checked. See `well-known/lightning-ai-well-known.yml`.
-- **No OAuth 2.0 / OIDC**, so no `scopes/` artifact — the platform uses teamspace-scoped API keys.
-- **No idempotency-key contract**, so no `Idempotency` pointer. Only `Sandbox.delete()` is documented as idempotent.
-- **No event, streaming or webhook surface**, so no `asyncapi/`.
-- **No vulnerability disclosure program or trust center** was found by probe.
-- **No MCP server, deprecation policy, or public SLA** is documented.
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Lightning Ai Authentication](https://apis.io/security/lightning-ai/lightning-ai-authentication/)
+- [Lightning Ai Domain Security](https://apis.io/security/lightning-ai/lightning-ai-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Lightning Ai Plans](https://apis.io/plans/lightning-ai/lightning-ai-plans/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Lightning Ai Rate Limits](https://apis.io/rate-limits/lightning-ai/lightning-ai-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://lightning.ai/)
+- [Documentation](https://lightning.ai/docs/)
+- [Getting started](https://lightning.ai/docs/platform/overview/getting-started)
+- [API reference](https://lightning.ai/docs/platform/developers/sdk)
+- [Pricing](https://lightning.ai/pricing/)
+- [Support](https://lightning.ai/community/)
+- [Changelog](https://lightning.ai/pages/releases/)
+- [Blog](https://lightning.ai/blog/)
+- [Compliance](https://lightning.ai/docs/platform/security/compliance)
+- [Terms of service](https://lightning.ai/policies/)
+- [Privacy policy](https://lightning.ai/policies/)
+- [GitHub](https://github.com/Lightning-AI)
+- [Status](https://status.lightning.ai/)
+
+## API Evangelist rating
+
+**Kin Score 26.1** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 31.6 |
+
+**Agent readiness 7.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/lightning-ai/](https://apis.io/providers/lightning-ai/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Lightning AI: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/lightning-ai/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
